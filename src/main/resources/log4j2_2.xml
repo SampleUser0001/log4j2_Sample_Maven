@@ -27,7 +27,7 @@
 		</Console>
 
 		<!-- ファイルに出力する設定 -->
-		<RollingFile name="logfile001" append="true" fileName="${logfile}"
+		<RollingFile name="logfile002" append="true" fileName="${logfile}"
 			filePattern="${logfile-archive}">
 			<PatternLayout>
 				<pattern>${format1}</pattern>
@@ -43,8 +43,8 @@
 		<Root level="trace">
 			<AppenderRef ref="Console" />
 		</Root>
-		<Logger name="sample.log4j2.App" level="trace">
-			<AppenderRef ref="logfile001" />
+		<Logger name="sample.other.App2" level="trace">
+			<AppenderRef ref="logfile002" />
 		</Logger>
 	</Loggers>
 </Configuration>

@@ -3,8 +3,9 @@
 ## 実行方法
 
 ```
-mvn compile
+mvn clean compile
 mvn exec:java -Dexec.mainClass=sample.log4j2.App
+mvn exec:java -Dexec.mainClass=sample.other.App2 -Dlog4j.configurationFile=log4j2_2.xml
 ```
 
 ### 出力ログ
