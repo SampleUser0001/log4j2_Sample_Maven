@@ -15,7 +15,7 @@
    		%nは改行
       -->
         <Property name="logfile">./logs/testlog.log</Property>
-        <Property name="logfile-archive">./logs/testlog_%d{yyyy-MM-dd-HH-mm}.log</Property>
+        <Property name="logfile-archive">./logs/testlog_%d{yyyy-MM-dd-HH-mm}.log.tar.gz</Property>
     </Properties>
     
 	<Appenders>
