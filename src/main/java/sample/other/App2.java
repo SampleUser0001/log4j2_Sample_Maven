@@ -8,28 +8,28 @@ import org.apache.logging.log4j.Logger;
  */
 public class App2 {
 
-	//getLoggerの引数はロガー名を指定する。
-	//log4j2では、ロガー名の指定が省略可能になった。
-	private Logger logger = LogManager.getLogger();
+    //getLoggerの引数はロガー名を指定する。
+    //log4j2では、ロガー名の指定が省略可能になった。
+    private Logger logger = LogManager.getLogger();
 
     public static void main( String[] args ) {
-		App2 a = new App2();
-		a.runSample();
+        App2 a = new App2();
+        a.runSample();
     }
 
-	void runSample() {
+    void runSample() {
 
-		logger.trace("Start_2"); //2017/01/21 06:02:17.154 [main] TRACE  test1.Sample Start
+        logger.trace("Start_2"); //2017/01/21 06:02:17.154 [main] TRACE  test1.Sample Start
 
-		int a = 1;
-		int b = 2;
-		String c = null;
+        int a = 1;
+        int b = 2;
+        String c = null;
 
-		logger.debug("debug_2"); //2017/01/21 06:02:17.157 [main] DEBUG  test1.Sample debug
-		logger.info("info={}",a); //2017/01/21 06:02:17.159 [main] INFO   test1.Sample info=1
-		logger.warn("warn={},={}" ,a,b); //2017/01/21 06:02:17.159 [main] WARN   test1.Sample warn=1,=2
-		logger.error("error={}",c); //2017/01/21 06:02:17.171 [main] ERROR  test1.Sample error=null
-		
-		logger.trace("End_2"); //2017/01/21 06:02:17.172 [main] TRACE  test1.Sample End
-	}
+        logger.debug("debug_2"); //2017/01/21 06:02:17.157 [main] DEBUG  test1.Sample debug
+        logger.info("info={}",a); //2017/01/21 06:02:17.159 [main] INFO   test1.Sample info=1
+        logger.warn("warn={},={}" ,a,b); //2017/01/21 06:02:17.159 [main] WARN   test1.Sample warn=1,=2
+        logger.error("error={}",c); //2017/01/21 06:02:17.171 [main] ERROR  test1.Sample error=null
+        
+        logger.trace("End_2"); //2017/01/21 06:02:17.172 [main] TRACE  test1.Sample End
+    }
 }
