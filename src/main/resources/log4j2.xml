@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE project>  
+<!DOCTYPE project> 
+<!-- statusでlog4j2自体のログを出力する。通常はoff --> 
 <Configuration status="off">
 
     <!-- Propertiesは、nameの値を変数として使える -->
@@ -16,10 +17,6 @@
         <Property name="format1">%d{yyyy/MM/dd HH:mm:ss.SSS} [%t] %-6p %c{10} %m%n</Property>
         <Property name="logfile">./logs/testlog.log</Property>
         <Property name="logfile-archive">./logs/testlog_%d{yyyy-MM-dd-HH-mm}.tar.gz</Property>
-
-        <!-- 別の動作確認で使う -->
-        <Property name="logdir" value="./otherTestLogs" />
-        <Property name="sys:logdir" value="./otherTestLogs" />
     </Properties>
     
     <Appenders>
@@ -31,6 +28,7 @@
         </Console>
 
         <!-- ファイルに出力する設定 -->
+        <!-- どこかのタイミングでローテートする。filePatternとTimeBasedTriggeringPoliciyに依存。-->
         <RollingFile name="logfile001" append="true" fileName="${logfile}"
             filePattern="${logfile-archive}">
             <PatternLayout>
@@ -40,24 +38,18 @@
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />
             </Policies>
         </RollingFile>
-
-        <!-- 「sys:*」は本来、Javaのシステムプロパティを取得する。この使い方ではない。 -->
-        <File name="Test" fileName="${sys:logdir}/default.log">
-            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss,SSS}] %-20c{1} %5p - %m%n" />
-        </File>
     </Appenders>
     
     <Loggers>
+        <!-- trace以上のログを出力する -->
+        <Root level="trace">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="logfile001" />
+        </Root>
+        <!-- LoggerでRootとは別にpackageごとに指定できる。
         <Logger name="sample.log4j2" level="debug" additivity="false">
             <AppenderRef ref="Test" />
         </Logger>
-
-        // trace以上のログを出力する
-        <Root level="trace">
-            <AppenderRef ref="Console" />
-        </Root>
-        <Logger name="sample.log4j2.App" level="trace">
-            <AppenderRef ref="logfile001" />
-        </Logger>
+        -->
     </Loggers>
 </Configuration>
